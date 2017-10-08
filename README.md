@@ -1,0 +1,1 @@
+# penyimpanan-barang
