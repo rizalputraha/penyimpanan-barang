@@ -10,11 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('/','DashboardController');
+Route::get('/','Auth\LoginController@showloginform');
 
 Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function(){
     Route::resource('/products', 'ProductsController');
-    
+    Route::resource('/transaksi', 'TransaksiController');
 });
 
 Auth::routes();

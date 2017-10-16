@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Products;
 
 class ProductsController extends Controller
 {
@@ -13,8 +14,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        
-        return view('admin.products.index');
+        $products = Products::all();
+        return view('admin.products.index',compact('products'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.create');
     }
 
     /**
@@ -35,7 +36,15 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_barang' => 'required',
+            'stok' => 'required',
+            'keterangan' => 'required',
+            'id_kategori' => 'required'
+        ]);
+
+        Products::create($request->all());
+        return redirect()->route('products.index');
     }
 
     /**
@@ -57,7 +66,8 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Products::find($id);
+        return view('admin.products.edit',compact('product'));
     }
 
     /**
@@ -69,7 +79,15 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama_barang' => 'required',
+            'stok' => 'required',
+            'keterangan' => 'required',
+            'kategori' => 'required'
+        ]); 
+        Products::find($id)->update($request->all());
+        return redirect()->route('products.index')
+                         ->with('success','Produk telah terupdate');
     }
 
     /**
@@ -80,6 +98,8 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Products::find($id)->delete();
+        return redirect()->route('products.index')
+                         ->with('success','Produk Telah Terhapus');
     }
 }

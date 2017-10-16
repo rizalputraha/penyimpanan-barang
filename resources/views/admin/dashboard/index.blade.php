@@ -69,7 +69,6 @@
           <input class="form-control w-300px" type="text">
           <div class="lookup-placeholder">
             <i class="ti-search"></i>
-            <span><strong>Try</strong> button, slider, modal, etc.</span>
           </div>
         </div>
       </div>
@@ -94,7 +93,10 @@
               <a class="dropdown-item" href="#"><i class="ti-settings"></i> Settings</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="../page-extra/user-lock-1.html"><i class="ti-lock"></i> Lock</a>
-              <a class="dropdown-item" href="../page-extra/user-login-3.html"><i class="ti-power-off"></i> Logout</a>
+              <form id="logout-form" action="{{ route('logout')}}" method="POST">
+                <button class="dropdown-item" type="submit"><i class="ti-lock"></i>Logout</button>
+                {{ csrf_field() }}
+              </form>
             </div>
           </li>
 
@@ -140,7 +142,7 @@
                   <div class="btn-toolbar">
                     <div class="btn-group btn-group-sm">
                       <button class="btn" title="Refresh" data-provide="tooltip"><i class="ion-refresh"></i></button>
-                      <button class="btn" title="Add new" data-provide="tooltip"><i class="ion-plus-round"></i></button>
+                      <a class="btn" title="Add New" href="{{route('products.create')}}"><i class="ion-plus-round"></i></a>
                     </div>
 
                     <div class="btn-group btn-group-sm ml-2 d-none d-sm-flex">
@@ -166,24 +168,14 @@
                       <th>Kategori</th>
                     </tr>
                   </thead>
+
                   <tbody>
                     <tr>
                       <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
+                      <td>asd</td>
+                      <td>12</td>
+                      <td>sasdadsa</td>
+                      <td>323</td>
                     </tr>
                   </tbody>
                 </table>
