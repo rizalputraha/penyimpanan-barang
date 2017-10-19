@@ -14,6 +14,9 @@ class Products extends Model
         'id_kategori'
     ];
 
+    public function category(){
+        return $this->belongsTo('Category');
+    }
 }
     
 
