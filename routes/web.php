@@ -13,6 +13,7 @@
 Route::get('/','Auth\LoginController@showloginform');
 
 Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function(){
+    Route::resource('/category', 'CategoryController');
     Route::resource('/products', 'ProductsController');
     Route::resource('/transaksi', 'TransaksiController');
 });
