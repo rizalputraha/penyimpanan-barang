@@ -56,18 +56,26 @@
 
             <li class="menu-category">Barang</li>
 
-            <li class="menu-item {{ (Request::is('admin/products'))? 'active' : '' }}">
-              <a class="menu-link" href="{{ url('admin/products')}}">
+            <li class="menu-item {{ (Request::is('admin/products')) ? 'active open' : '' }}">
+              <a class="menu-link" href="#">
                 <span class="icon fa fa-cube"></span>
                 <span class="title">Barang</span>
+                <span class="arrow"></span>
               </a>
-            </li>
-            
-            <li class="menu-item {{ (Request::is('admin/category'))? 'active' : '' }}">
-              <a class="menu-link" href="{{ url('admin/category') }}">
-                <span class="icon fa fa-tags"></span>
-                <span class="title">Kategori</span>
-              </a>
+              <ul class="menu-submenu">
+                  <li class="menu-item {{ (Request::is('admin/products')) ? 'active' : ''}}">
+                    <a class="menu-link" href="{{url('admin/products')}}">
+                      <span class="dot"></span>
+                      <span class="title">Data Barang</span>
+                    </a>
+                  </li>
+                  <li class="menu-item {{ (Request::is('admin/category')) ? 'active' : ''}}">
+                    <a class="menu-link" href="#">
+                      <span class="dot"></span>
+                      <span class="title">Data Kategori Barang</span>
+                    </a>
+                  </li>
+              </ul>
             </li>
             
             <li class="menu-item {{ (Request::is('admin/transaction')) ? 'active open' : ''}}">
