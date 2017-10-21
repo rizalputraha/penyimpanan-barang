@@ -15,7 +15,8 @@ Route::get('/','Auth\LoginController@showloginform');
 Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function(){
     Route::resource('/category', 'CategoryController');
     Route::resource('/products', 'ProductsController');
-    Route::resource('/transaksi', 'TransaksiController');
+    Route::resource('/transaction', 'TransactionController');
+    Route::get('/transaksi/barang-masuk', 'TransaksiMasukController@index');
 });
 
 Auth::routes();
