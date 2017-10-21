@@ -49,7 +49,7 @@
                       <td>{{ $product->nama_barang }}</td>
                       <td>{{ $product->stok }}</td>
                       <td>{{ $product->keterangan }}</td>
-                      <td>{{ $product->id_kategori }}</td>
+                      <td>{{ $product->category->name }}</td>
                       <td>
                         <a class="btn btn-success" href="{{ route('products.edit',$product->id) }}"><i class="fa fa-pencil"></i> Edit</a>
                         <form style="display:inline;" action="{{ route('products.destroy',$product->id) }}" method="POST">

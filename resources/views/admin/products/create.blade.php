@@ -45,8 +45,12 @@
                                     <textarea id="input-ket-barang" class="form-control" name="keterangan" placeholder="Keterangan"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="input-nm-barang">Kategori Barang</label>
-                                    <input class="form-control"  type="text" name="id_kategori" id="1">
+                                    <label for="input-kat-barang">Kategori Barang</label>
+                                    <select name="id_kategori" id="input-kat-barang" class="form-control">
+                                        @foreach($category as $kat)
+                                        <option value="{{$kat->id}}">{{$kat->name}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <input class="btn btn-primary" value="Tambah" type="submit">

@@ -63,6 +63,13 @@
               </a>
             </li>
             
+            <li class="menu-item {{ (Request::is('admin/category'))? 'active' : '' }}">
+              <a class="menu-link" href="{{ url('admin/category') }}">
+                <span class="icon fa fa-tags"></span>
+                <span class="title">Kategori</span>
+              </a>
+            </li>
+            
             <li class="menu-item">
               <a class="menu-link" href="#">
                 <span class="icon fa fa-exchange"></span>
@@ -83,13 +90,6 @@
                     </a>
                   </li>
                 </ul>
-            </li>
-            
-            <li class="menu-item {{ (Request::is('admin/category'))? 'active' : '' }}">
-              <a class="menu-link" href="{{ url('admin/category') }}">
-                <span class="icon fa fa-tags"></span>
-                <span class="title">Kategori</span>
-              </a>
             </li>
 
             <li class="menu-item">  
