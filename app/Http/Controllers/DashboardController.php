@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Products;
+use App\Transaction;
 use Illuminate\Http\Request;
+
 
 class DashboardController extends Controller
 {
@@ -13,8 +17,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        
-        return view('admin.dashboard.index');
+        $jml_barang = Products::count();
+        $jml_transaksi = Transaction::count();
+        return view('admin.dashboard.index',compact('jml_barang','jml_transaksi'));
     }
 
     /**

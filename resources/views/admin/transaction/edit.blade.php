@@ -31,6 +31,7 @@
                             @endif
                                 <form action="{{ route('products.update',$product->id) }}" method="POST">
                                 {{ method_field('PATCH') }}
+                                {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="input-nm-barang">Nama Barang</label>
                                     <input id="input-nm-barang" class="form-control" name="nama_barang" value="{{ $product->nama_barang }}" type="text" placeholder="Nama Barang"/>

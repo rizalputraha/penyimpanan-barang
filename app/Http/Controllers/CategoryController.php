@@ -38,7 +38,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_kategori' => 'required'
+            'name' => 'required'
         ]);
 
         Category::create($request->all());
@@ -64,7 +64,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $product = Category::find($id);
+        $category = Category::find($id);
         return view('admin.category.edit',compact('category'));
     }
 
@@ -78,7 +78,7 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_kategori' => 'required'
+            'name' => 'required'
         ]); 
         Category::find($id)->update($request->all());
         return redirect()->route('category.index')

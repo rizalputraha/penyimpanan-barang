@@ -1,6 +1,17 @@
 @extends('admin.app')
 
 @section('content')
+        <!-- Main container -->
+    <main>
+      <header class="header bg-ui-general">
+        <div class="header-info">
+          <h1 class="header-title">
+            <strong>Buat Data</strong> Barang
+            <small>Dibawah ini adalah form untuk menambahkan data barang.</small>
+          </h1>
+        </div>
+      </header><!--/.header -->
+
         <div class="main-content">
             <div class="row">
                 <div class="col-md-12">
@@ -18,12 +29,12 @@
                                     </ul>
                                 </div>
                             @endif
-                                <form action="{{ route('products.store') }}" method="POST">
+                                <form action="{{ route('category.store') }}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
                                     <label for="input-nm-kategori">Nama Kategori</label>
-                                    <input id="input-nm-kategori" class="form-control" name="nama_kategori" type="text" placeholder="Nama Kategori"/>
+                                    <input id="input-nm-kategori" class="form-control" name="name" type="text" placeholder="Nama Kategori"/>
                                 </div>
                                 <div class="form-group">
                                     <input class="btn btn-primary" value="Tambah" type="submit">

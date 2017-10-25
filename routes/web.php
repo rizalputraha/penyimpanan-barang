@@ -17,6 +17,7 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function(){
     Route::resource('/products', 'ProductsController');
     Route::resource('/transaction', 'TransactionController');
     Route::get('/transaksi/barang-masuk', 'TransaksiMasukController@index');
+    Route::get('/dashboard','DashboardController@index');
 });
 
 Auth::routes();

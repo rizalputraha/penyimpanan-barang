@@ -56,7 +56,11 @@
 
             <li class="menu-category">Barang</li>
 
-            <li class="menu-item {{ (Request::is('admin/products')) ? 'active open' : '' }}">
+            <li class="menu-item @if(Request::is('admin/products') || Request::is('admin/category')) 
+                                    {{'active open'}}
+                                 @else
+                                    {{''}}
+                                 @endif">
               <a class="menu-link" href="#">
                 <span class="icon fa fa-cube"></span>
                 <span class="title">Barang</span>
@@ -70,7 +74,7 @@
                     </a>
                   </li>
                   <li class="menu-item {{ (Request::is('admin/category')) ? 'active' : ''}}">
-                    <a class="menu-link" href="#">
+                    <a class="menu-link" href="{{url('admin/category')}}">
                       <span class="dot"></span>
                       <span class="title">Data Kategori Barang</span>
                     </a>

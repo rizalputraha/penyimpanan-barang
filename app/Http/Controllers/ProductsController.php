@@ -85,7 +85,7 @@ class ProductsController extends Controller
             'nama_barang' => 'required',
             'stok' => 'required',
             'keterangan' => 'required',
-            'kategori' => 'required'
+            'id_kategori' => 'required'
         ]); 
         Products::find($id)->update($request->all());
         return redirect()->route('products.index')

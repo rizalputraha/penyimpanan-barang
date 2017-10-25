@@ -21,7 +21,7 @@
                             <div class="col-md-5">
                             @if(count($errors) > 0)
                                 <div class="alert alert-danger">
-                                    <strong>Whoops!</strong> Ada yang Salah Dengan dengan pengisiian anda<br><br>
+                                    <strong>Whoops!</strong> Ada yang Salah Dengan dengan Form pengisiian anda<br><br>
                                     <ul>
                                         @foreach($errors->all as $error)
                                         <li>{{ $error }}</li>
@@ -34,11 +34,15 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
                                     <label for="input-nm-barang">No Transaksi</label>
-                                    <input id="input-nm-barang" class="form-control" name="nama_barang" type="text" placeholder="Nama Barang"/>
+                                    <input id="input-nm-barang" class="form-control" name="no_transaksi" type="text" placeholder="No transaksi"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-nm-barang">Nama Barang</label>
+                                    <input id="input-nm-barang" class="form-control" name="no_transaksi" type="text" placeholder="No transaksi"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="input-jml-barang">Jenis Transaksi</label>
-                                    <select name="id_kategori" id="input-kat-barang" class="form-control">
+                                    <select name="jenis_transaksi" id="input-kat-barang" class="form-control">
                                         <option value="barang_masuk">Barang Masuk</option>
                                         <option value="barang_keluar">Barang Keluar</option>
                                     </select>

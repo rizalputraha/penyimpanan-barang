@@ -31,9 +31,10 @@
                             @endif
                                 <form action="{{ route('category.update',$category->id) }}" method="POST">
                                 {{ method_field('PATCH') }}
+                                {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="input-nm-kategori">Nama Kategori</label>
-                                    <input id="input-nm-kategori" class="form-control" name="nama_kategori" value="{{ $category->name }}" type="text" placeholder="Nama Kategori"/>
+                                    <input id="input-nm-kategori" class="form-control" name="name" value="{{ $category->name }}" type="text" placeholder="Nama Kategori"/>
                                 </div>
                                 <div class="form-group">
                                     <input class="btn btn-primary" value="Update" type="submit">
