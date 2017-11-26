@@ -29,7 +29,7 @@
                                     </ul>
                                 </div>
                             @endif
-                                <form action="{{ route('products.store') }}" method="POST">
+                                <form action="{{ route('barang.store') }}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
@@ -37,12 +37,16 @@
                                     <input id="input-nm-barang" class="form-control" name="nama_barang" type="text" placeholder="Nama Barang"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="input-jml-barang">Jumlah Barang</label>
-                                    <input id="input-jml-barang" class="form-control" name="stok" type="text" placeholder="Jumlah Barang"/>
+                                <label for="input-kat-barang">Merk Barang</label>
+                                <select name="id_merk" id="input-kat-barang" class="form-control">
+                                    @foreach($merk as $m)
+                                    <option value="{{$m->id}}">{{$m->nama_merk}}</option>
+                                    @endforeach
+                                </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="input-ket-barang">Keterangan Barang</label>
-                                    <textarea id="input-ket-barang" class="form-control" name="keterangan" placeholder="Keterangan"></textarea>
+                                    <textarea id="input-ket-barang" class="form-control" name="ket" placeholder="Keterangan"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="input-kat-barang">Kategori Barang</label>

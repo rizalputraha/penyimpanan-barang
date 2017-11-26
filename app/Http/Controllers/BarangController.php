@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Products;
-use App\Category;
 
-class ProductsController extends Controller
+use App\Barang;
+use App\Category;
+use App\Merk;
+
+
+class BarangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +18,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Products::with('category')->get();
-        return view('admin.products.index',compact('products'));
+        $merk = Merk::all();
+        $barang = Barang::with('category','merk')->get();
+        return view('admin.products.index',compact('barang','merk'));
     }
 
     /**
@@ -25,9 +29,10 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    { 
-        $category = Category::all(['id', 'name']);
-        return view('admin.products.create',compact('category'));
+    {
+        $category = Category::all();
+        $merk = Merk::all();
+        return view('admin.products.create',compact('category','merk'));
     }
 
     /**
@@ -40,13 +45,13 @@ class ProductsController extends Controller
     {
         $request->validate([
             'nama_barang' => 'required',
-            'stok' => 'required',
-            'keterangan' => 'required',
-            'id_kategori' => 'required'
+            'id_kategori' => 'required',
+            'ket' => 'required',
+            'id_merk' => 'required'
         ]);
 
-        Products::create($request->all());
-        return redirect()->route('products.index');
+        Barang::create($request->all());
+        return redirect()->route('barang.index');
     }
 
     /**
@@ -68,8 +73,10 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $product = Products::find($id);
-        return view('admin.products.edit',compact('product'));
+        $merk = Merk::all();
+        $barang = Barang::find($id);
+        $category = Category::all();
+        return view('admin.products.edit',compact('barang','merk','category'));
     }
 
     /**
@@ -83,13 +90,13 @@ class ProductsController extends Controller
     {
         $request->validate([
             'nama_barang' => 'required',
-            'stok' => 'required',
-            'keterangan' => 'required',
-            'id_kategori' => 'required'
+            'id_kategori' => 'required',
+            'ket' => 'required',
+            'id_merk' => 'required'
         ]); 
-        Products::find($id)->update($request->all());
-        return redirect()->route('products.index')
-                         ->with('success','Produk telah terupdate');
+        Barang::find($id)->update($request->all());
+        return redirect()->route('barang.index')
+                         ->with('success','Barang telah terupdate');
     }
 
     /**
@@ -100,8 +107,8 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        Products::find($id)->delete();
-        return redirect()->route('products.index')
-                         ->with('success','Produk Telah Terhapus');
+        Barang::find($id)->delete();
+        return redirect()->route('barang.index')
+                         ->with('success','Barang Telah Terhapus');
     }
 }

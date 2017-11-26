@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Transaction;
+use App\Merk;
+use App\Barang;
 use Illuminate\Http\Request;
+
 
 class TransactionController extends Controller
 {
@@ -14,8 +17,9 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $transaction = Transaction::all();
-        return view('admin.transaction.index',compact('transaction'));
+        $merk = Merk::all();
+        $transaksi = Transaction::with('barang')->get();
+        return view('admin.transaction.index',compact('transaksi','merk'));
     }
 
     /**
@@ -25,7 +29,9 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        return view('admin.transaction.create');
+        $merk = Merk::all();
+        $barang = Barang::all();
+        return view('admin.transaction.create',compact('merk','barang'));
     }
 
     /**
@@ -38,11 +44,12 @@ class TransactionController extends Controller
     {
         $request->validate([
             'no_transaksi' => 'required',
+            'id_barang' => 'required',
             'jenis_transaksi' => 'required',
         ]);
 
-        Products::create($request->all());
-        return redirect()->route('transaction.index');
+        Transaction::create($request->all());
+        return redirect()->route('transaksi.index');
     }
 
     /**
@@ -64,8 +71,10 @@ class TransactionController extends Controller
      */
     public function edit($id)
     {
-        $product = Products::find($id);
-        return view('admin.products.edit',compact('product'));
+        $merk = Merk::all();
+        $barang = Barang::all();
+        $trans = Transaction::find($id);
+        return view('admin.transaction.edit',compact('trans','barang','merk'));
     }
 
     /**
@@ -79,10 +88,11 @@ class TransactionController extends Controller
     {
         $request->validate([
             'no_transaksi' => 'required',
+            'id_barang' => 'required',
             'jenis_transaksi' => 'required',
         ]); 
-        Products::find($id)->update($request->all());
-        return redirect()->route('transaction.index')
+        Transaction::find($id)->update($request->all());
+        return redirect()->route('transaksi.index')
                          ->with('success','Transaksi telah terupdate');
     }
 
@@ -94,8 +104,9 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        Products::find($id)->delete();
-        return redirect()->route('products.index')
+        Transaction::find($id)->delete();
+        return redirect()->route('transaksi.index')
                          ->with('success','Transaksi Telah Terhapus');
     }
+
 }

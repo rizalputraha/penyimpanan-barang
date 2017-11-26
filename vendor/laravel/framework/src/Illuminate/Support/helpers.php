@@ -88,7 +88,7 @@ if (! function_exists('array_dot')) {
 
 if (! function_exists('array_except')) {
     /**
-     * Get all of the given array except for a specified array of items.
+     * Get all of the given array except for a specified array of keys.
      *
      * @param  array  $array
      * @param  array|string  $keys
@@ -1046,6 +1046,7 @@ if (! function_exists('throw_if')) {
      * @param  \Throwable|string  $exception
      * @param  array  ...$parameters
      * @return void
+     * @throws \Throwable
      */
     function throw_if($boolean, $exception, ...$parameters)
     {
@@ -1063,6 +1064,7 @@ if (! function_exists('throw_unless')) {
      * @param  \Throwable|string  $exception
      * @param  array  ...$parameters
      * @return void
+     * @throws \Throwable
      */
     function throw_unless($boolean, $exception, ...$parameters)
     {

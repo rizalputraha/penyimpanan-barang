@@ -4,19 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Products extends Model
+class Merk extends Model
 {
-    protected $table = 'barang';
+    protected $table = 'merk';
     protected $fillable = [
-        'nama_barang',
-        'stok',
-        'keterangan',
-        'id_kategori'
+        'nama_merk',
     ];
 
     public function category(){
         return $this->belongsTo('App\Category','id_kategori','id');
     }
+
 }
     
 

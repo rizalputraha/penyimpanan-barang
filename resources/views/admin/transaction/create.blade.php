@@ -29,7 +29,7 @@
                                     </ul>
                                 </div>
                             @endif
-                                <form action="{{ route('products.store') }}" method="POST">
+                                <form action="{{ route('transaksi.store') }}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
@@ -37,14 +37,18 @@
                                     <input id="input-nm-barang" class="form-control" name="no_transaksi" type="text" placeholder="No transaksi"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="input-nm-barang">Nama Barang</label>
-                                    <input id="input-nm-barang" class="form-control" name="no_transaksi" type="text" placeholder="No transaksi"/>
+                                    <label for="input-kat-barang">Nama Barang</label>
+                                    <select name="id_barang" id="input-kat-barang" class="form-control">
+                                        @foreach($barang as $b)
+                                            <option value="{{$b->id}}">{{$b->nama_barang}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="input-jml-barang">Jenis Transaksi</label>
                                     <select name="jenis_transaksi" id="input-kat-barang" class="form-control">
-                                        <option value="barang_masuk">Barang Masuk</option>
-                                        <option value="barang_keluar">Barang Keluar</option>
+                                        <option value="Barang Masuk">Barang Masuk</option>
+                                        <option value="Barang Keluar">Barang Keluar</option>
                                     </select>
                                 </div>
                                 <div class="form-group">

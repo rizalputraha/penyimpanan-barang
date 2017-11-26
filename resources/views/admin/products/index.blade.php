@@ -27,32 +27,32 @@
                 <div class="flexbox-mb-20">
                   <div class="btn-toolbar" style="padding-bottom:20px;">
                     <div class="btn-group btn-group-sm">
-                      <a class="btn btn-info" href="{{route('products.create')}}"><i class="fa fa-plus"></i> Add New Data</a>
+                      <a class="btn btn-info" href="{{route('barang.create')}}"><i class="fa fa-plus"></i> Add New Data</a>
                     </div>
                   </div>
                 </div>
-                <table id="tabel-barang" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                <table id="bla" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                   <thead>
                     <tr>
                       <th>No</th>
                       <th>Nama Barang</th>
-                      <th>Stok Barang</th>
-                      <th>Keterangan</th>
                       <th>Kategori</th>
+                      <th>Merk</th>
+                      <th>Keterangan</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach($products as $key => $product)
+                  @foreach($barang as $key => $b)
                     <tr>
-                      <th>{{ ++$key }}</th>
-                      <td>{{ $product->nama_barang }}</td>
-                      <td>{{ $product->stok }}</td>
-                      <td>{{ $product->keterangan }}</td>
-                      <td>{{ $product->category->name }}</td>
+                      <td>{{ ++$key }}</td>
+                      <td>{{ $b->nama_barang }}</td>
+                      <td>{{ $b->category->name  }}</td>
+                      <td>{{ $b->merk->nama_merk}}</td>
+                      <td>{{ $b->ket }}</td>
                       <td>
-                        <a class="btn btn-success" href="{{ route('products.edit',$product->id) }}"><i class="fa fa-pencil"></i> Edit</a>
-                        <form style="display:inline;" action="{{ route('products.destroy',$product->id) }}" method="POST">
+                        <a class="btn btn-success" href="{{ route('barang.edit',$b->id) }}"><i class="fa fa-pencil"></i> Edit</a>
+                        <form style="display:inline;" action="{{ route('barang.destroy',$b->id) }}" method="POST">
                           {{ csrf_field() }}
                           {{ method_field('DELETE')}}
                           <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>

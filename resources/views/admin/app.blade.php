@@ -20,6 +20,11 @@
     <!-- Favicon -->
     <link rel="apple-touch-icon" href="{{ asset('admin/img/apple-touch-icon.png') }}">
     <link rel="icon" href="{{ asset('admin/img/favicon.png') }}">
+    <style>
+      table.dataTable.nowrap th, table.dataTable.nowrap td{
+        white-space:normal;
+      }
+    </style>
 </head>
 <body>
     <!-- Preloader -->
@@ -47,7 +52,7 @@
 
           <li class="menu-category">Navigation</li>
 
-          <li class="menu-item">
+          <li class="menu-item {{ (Request::is('admin/dashboard')) ? 'active' : ''}}">
               <a class="menu-link" href="{{ url('admin/dashboard')}}">
                 <span class="icon fa fa-home"></span>
                 <span class="title">Dashboard</span>
@@ -56,7 +61,7 @@
 
             <li class="menu-category">Barang</li>
 
-            <li class="menu-item @if(Request::is('admin/products') || Request::is('admin/category')) 
+            <li class="menu-item @if(Request::is('admin/merk') || Request::is('admin/category')) 
                                     {{'active open'}}
                                  @else
                                     {{''}}
@@ -67,12 +72,27 @@
                 <span class="arrow"></span>
               </a>
               <ul class="menu-submenu">
-                  <li class="menu-item {{ (Request::is('admin/products')) ? 'active' : ''}}">
-                    <a class="menu-link" href="{{url('admin/products')}}">
+              <li class="menu-item {{ (Request::is('admin/barang')) ? 'active' : ''}}">
+                    <a class="menu-link" href="{{url('admin/barang')}}">
                       <span class="dot"></span>
-                      <span class="title">Data Barang</span>
+                      <span class="title">Data Semua Barang</span>
                     </a>
                   </li>
+                  <li class="menu-item {{ (Request::is('admin/merk')) ? 'active' : ''}}">
+                    <a class="menu-link" href="{{url('admin/merk')}}">
+                      <span class="dot"></span>
+                      <span class="title">Data merk</span>
+                    </a>
+                  </li>
+                  @foreach( $merk as $b)
+                  <li class="menu-item">
+                    <a class="menu-link" href="{{route('merk.show',$b->id)}}">
+                      <span class="dot"></span>
+                      <span class="title">{{ $b->nama_merk }}</span>
+                      
+                    </a>
+                  </li>
+                  @endforeach
                   <li class="menu-item {{ (Request::is('admin/category')) ? 'active' : ''}}">
                     <a class="menu-link" href="{{url('admin/category')}}">
                       <span class="dot"></span>
@@ -82,27 +102,27 @@
               </ul>
             </li>
             
-            <li class="menu-item {{ (Request::is('admin/transaction')) ? 'active open' : ''}}">
+            <li class="menu-item {{ (Request::is('admin/transaksi') || Request::is('admin/barang-masuk') || Request::is('admin/barang-keluar')) ? 'active open' : ''}}">
               <a class="menu-link" href="#">
                 <span class="icon fa fa-exchange"></span>
                 <span class="title">Transaksi</span>
                 <span class="arrow"></span>
               </a>
                 <ul class="menu-submenu">
-                <li class="menu-item {{ (Request::is('admin/transaction')) ? 'active' : ''}}">
-                    <a class="menu-link" href="{{url('admin/transaction')}}">
+                <li class="menu-item {{ (Request::is('admin/transaksi')) ? 'active' : ''}}">
+                    <a class="menu-link" href="{{url('admin/transaksi')}}">
                       <span class="dot"></span>
                       <span class="title">Semua Transaksi</span>
                     </a>
                   </li>
-                  <li class="menu-item {{ (Request::is('admin/transaction/barang-masuk')) ? 'active' : ''}}">
-                    <a class="menu-link" href="#">
+                  <li class="menu-item {{ (Request::is('admin/barang-masuk')) ? 'active' : ''}}">
+                    <a class="menu-link" href="{{url('admin/barang-masuk')}}">
                       <span class="dot"></span>
                       <span class="title">Barang Masuk</span>
                     </a>
                   </li>
-                  <li class="menu-item {{ (Request::is('admin/transaction/barang-keluar')) ? 'active' : ''}}">
-                    <a class="menu-link" href="#">
+                  <li class="menu-item {{ (Request::is('admin/barang-keluar')) ? 'active' : ''}}">
+                    <a class="menu-link" href="{{url('admin/barang-keluar')}}">
                       <span class="dot"></span>
                       <span class="title">Barang Keluar</span>
                     </a>
@@ -117,26 +137,26 @@
                 <span class="arrow"></span>
               </a>
               <ul class="menu-submenu">
-                <li class="menu-item {{ (Request::is('admin/transaction')) ? 'active' : ''}}">
-                    <a class="menu-link" href="{{url('admin/transaction')}}">
+                <li class="menu-item {{ (Request::is('admin/laporan/barang')) ? 'active' : ''}}">
+                    <a class="menu-link" href="{{url('admin/laporan/barang')}}">
                       <span class="dot"></span>
                       <span class="title">Barang</span>
                     </a>
                   </li>
-                  <li class="menu-item {{ (Request::is('admin/transaction/barang-masuk')) ? 'active' : ''}}">
-                    <a class="menu-link" href="#">
+                  <li class="menu-item {{ (Request::is('admin/laporan/transaksi')) ? 'active' : ''}}">
+                    <a class="menu-link" href="{{url('admin/laporan/transaksi')}}">
                       <span class="dot"></span>
                       <span class="title">Transaksi</span>
                     </a>
                   </li>
-                  <li class="menu-item {{ (Request::is('admin/transaction/barang-keluar')) ? 'active' : ''}}">
-                    <a class="menu-link" href="#">
+                  <li class="menu-item {{ (Request::is('admin/laporan/barang-masuk')) ? 'active' : ''}}">
+                    <a class="menu-link" href="{{url('admin/laporan/barang-masuk')}}">
                       <span class="dot"></span>
                       <span class="title">Transaksi Barang Masuk</span>
                     </a>
                   </li>
-                  <li class="menu-item {{ (Request::is('admin/transaction/barang-keluar')) ? 'active' : ''}}">
-                    <a class="menu-link" href="#">
+                  <li class="menu-item {{ (Request::is('admin/laporan/barang-keluar')) ? 'active' : ''}}">
+                    <a class="menu-link" href="{{url('admin/laporan/barang-keluar')}}">
                       <span class="dot"></span>
                       <span class="title">Transaksi Barang Keluar</span>
                     </a>
@@ -207,7 +227,7 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
     <script type="text/javascript">
-        $('#tabel-barang').DataTable();
+        $('#bla').DataTable();
     </script>
     <script src="{{ asset('admin/js/core.min.js')}}"></script>
     <script src="{{ asset('admin/js/app.min.js')}}"></script>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Products;
+use App\Merk;
 use App\Transaction;
 use Illuminate\Http\Request;
 
@@ -15,11 +15,18 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct()
+     {
+        $this->middleware('web');
+     }
+
     public function index()
     {
-        $jml_barang = Products::count();
+        $merk = Merk::all();
+        $jml_barang = Merk::count();
         $jml_transaksi = Transaction::count();
-        return view('admin.dashboard.index',compact('jml_barang','jml_transaksi'));
+        return view('admin.dashboard.index',compact('jml_barang','jml_transaksi','merk'));
     }
 
     /**

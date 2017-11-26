@@ -29,24 +29,27 @@
                                     </ul>
                                 </div>
                             @endif
-                                <form action="{{ route('products.update',$product->id) }}" method="POST">
+                                <form action="{{ route('transaksi.update',$trans->id) }}" method="POST">
                                 {{ method_field('PATCH') }}
                                 {{ csrf_field() }}
                                 <div class="form-group">
-                                    <label for="input-nm-barang">Nama Barang</label>
-                                    <input id="input-nm-barang" class="form-control" name="nama_barang" value="{{ $product->nama_barang }}" type="text" placeholder="Nama Barang"/>
+                                    <label for="input-nm-barang">No Transaksi</label>
+                                    <input id="input-nm-barang" class="form-control" name="no_transaksi" value="{{ $trans->no_transaksi }}" type="text" placeholder="Nama Barang"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="input-jml-barang">Jumlah Barang</label>
-                                    <input id="input-jml-barang" class="form-control" name="stok" value="{{ $product->stok }}" type="text" placeholder="Jumlah Barang"/>
+                                    <label for="input-jml-barang">Nama Barang</label>
+                                    <select name="id_barang" id="input-kat-barang" class="form-control">
+                                        @foreach($barang as $b)
+                                            <option value="{{$b->id}}">{{$b->nama_barang}}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="input-ket-barang">Keterangan Barang</label>
-                                    <textarea id="input-ket-barang" class="form-control" name="keterangan" placeholder="Keterangan">{{ $product->keterangan }}</textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="input-nm-barang">Kategori Barang</label>
-                                    <input class="form-control"  type="text" name="id_kategori" value="{{ $product->id_kategori }}">
+                                    <label for="input-jml-barang">Jenis Transaksi</label>
+                                    <select name="jenis_transaksi" id="input-kat-barang" class="form-control">
+                                        <option value="Barang Masuk">Barang Masuk</option>
+                                        <option value="Barang Keluar">Barang Keluar</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <input class="btn btn-primary" value="Update" type="submit">

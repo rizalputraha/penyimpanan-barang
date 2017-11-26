@@ -27,28 +27,30 @@
                 <div class="flexbox-mb-20">
                   <div class="btn-toolbar" style="padding-bottom:20px;">
                     <div class="btn-group btn-group-sm">
-                      <a class="btn btn-info" href="{{route('transaction.create')}}"><i class="fa fa-plus"></i> Add New Data</a>
+                      <a class="btn btn-info" href="{{route('transaksi.create')}}"><i class="fa fa-plus"></i> Add New Data</a>
                     </div>
                   </div>
                 </div>
-                <table id="tabel-barang" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+                <table id="bla" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
                   <thead>
                     <tr>
                       <th>No</th>
                       <th>No Transaksi</th>
+                      <th>Nama Barang</th>
                       <th>Jenis Transaksi</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                  @foreach($transaction as $key => $trans)
+                  @foreach($transaksi as $key => $trans)
                     <tr>
                       <th>{{ ++$key }}</th>
                       <td>{{ $trans->no_transaksi }}</td>
+                      <td>{{ $trans->barang->nama_barang}}</td>
                       <td>{{ $trans->jenis_transaksi }}</td>
                       <td>
-                        <a class="btn btn-success" href="{{ route('transaction.edit',$trans->id) }}"><i class="fa fa-pencil"></i> Edit</a>
-                        <form style="display:inline;" action="{{ route('transaction.destroy',$trans->id) }}" method="POST">
+                        <a class="btn btn-success" href="{{ route('transaksi.edit',$trans->id) }}"><i class="fa fa-pencil"></i> Edit</a>
+                        <form style="display:inline;" action="{{ route('transaksi.destroy',$trans->id) }}" method="POST">
                           {{ csrf_field() }}
                           {{ method_field('DELETE')}}
                           <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>

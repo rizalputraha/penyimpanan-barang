@@ -1,12 +1,16 @@
 @extends('auth.app')
 
+@section('title','Login')
+
 @section('content')
 <div class="row min-h-fullscreen center-vh p-20 m-0">
 <div class="col-12">
   <div class="card card-shadowed px-50 py-30 w-400px mx-auto" style="max-width: 100%">
-    <h5 class="text-uppercase">Sign in</h5>
+    <h5 class="text-uppercase text-center">Selamat Datang</h5>
     <br>
-
+    <div class="text-center">
+    <img class="img-fluid"src="{{asset('admin/img/logo.jpg')}}" alt="Logo" width="100px">
+    </div>
     <form class="form-type-material" method="POST" action="{{ route('login') }}">
       {{ csrf_field() }}
       <div class="form-group">

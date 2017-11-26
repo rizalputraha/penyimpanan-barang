@@ -10,14 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','Auth\LoginController@showloginform');
+Route::get('/','Auth\LoginController@showloginform',['middleware ' => 'guest']);
 
 Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function(){
+    Route::resource('/barang', 'BarangController');
     Route::resource('/category', 'CategoryController');
-    Route::resource('/products', 'ProductsController');
-    Route::resource('/transaction', 'TransactionController');
-    Route::get('/transaksi/barang-masuk', 'TransaksiMasukController@index');
+    Route::resource('/merk', 'MerkController');
+    Route::resource('/transaksi', 'TransactionController');
+    Route::get('/barang-masuk', 'DetailTransaksiController@masuk');
+    Route::get('/barang-keluar', 'DetailTransaksiController@keluar');
     Route::get('/dashboard','DashboardController@index');
+    Route::get('/laporan/barang','LaporanController@barang');
+    Route::get('/laporan/transaksi','LaporanController@transaksi');
+    Route::get('/laporan/barang-masuk','LaporanController@masuk');
+    Route::get('/laporan/barang-keluar','LaporanController@keluar');
 });
+
+
 
 Auth::routes();

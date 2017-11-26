@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Merk;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,8 +16,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        $merk = Merk::all();
         $category = Category::all();
-        return view('admin.category.index',compact('category'));
+        return view('admin.category.index',compact('category','merk'));
     }
 
     /**
@@ -26,7 +28,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.category.create');
+        $merk = Merk::all();
+        return view('admin.category.create',compact('merk'));
     }
 
     /**
@@ -64,8 +67,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        $merk = Merk::all();
         $category = Category::find($id);
-        return view('admin.category.edit',compact('category'));
+        return view('admin.category.edit',compact('category','merk'));
     }
 
     /**
@@ -93,7 +97,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Products::find($id)->delete();
+        Category::find($id)->delete();
         return redirect()->route('category.index')
                          ->with('success','Kategori Telah Terhapus');
     }
