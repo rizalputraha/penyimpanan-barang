@@ -33,8 +33,8 @@
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
-                                    <label for="input-nm-barang">Nama Barang</label>
-                                    <input id="input-nm-barang" class="form-control" name="nama_barang" type="text" placeholder="Nama Barang"/>
+                                    <label for="input-nm-barang">Stok</label>
+                                    <input id="input-stok" class="form-control" name="stok" type="text" placeholder="Stok Barang"/>
                                 </div>
                                 <div class="form-group">
                                 <label for="input-kat-barang">Merk Barang</label>
@@ -43,10 +43,6 @@
                                     <option value="{{$m->id}}">{{$m->nama_merk}}</option>
                                     @endforeach
                                 </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="input-ket-barang">Keterangan Barang</label>
-                                    <textarea id="input-ket-barang" class="form-control" name="ket" placeholder="Keterangan"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="input-kat-barang">Kategori Barang</label>

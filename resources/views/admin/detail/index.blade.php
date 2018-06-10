@@ -28,7 +28,7 @@
                 <div class="flexbox-mb-20">
                   <div class="btn-toolbar" style="padding-bottom:20px;">
                     <div class="btn-group btn-group-sm">
-                      <a class="btn btn-info" href="{{route('barang.create')}}"><i class="fa fa-plus"></i> Add New Data</a>
+                      <a class="btn btn-info" href="{{route('transaction.create')}}"><i class="fa fa-plus"></i> Add New Data</a>
                     </div>
                   </div>
                 </div>
@@ -36,20 +36,20 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Barang</th>
-                      <th>Kategori</th>
-                      <th>Merk</th>
-                      <th>Keterangan</th>
+                      <th>Kode Transaksi</th>
+                      <th>Merk Barang</th>
+                      <th>Jumlah Barang</th>
+                      <th>Jenis Transaksi</th>
                     </tr>
                   </thead>
                   <tbody>
                   @foreach($sp_barang as $key => $b)
                     <tr>
                       <th>{{ ++$key }}</th>
-                      <td>{{ $b->nama_barang }}</td>
-                      <td>{{ $b->name }}</td>
-                      <td>{{ $b->nama_merk}}</td>
-                      <td>{{ $b->ket }}</td>
+                      <td>{{ $b->no_transaksi }}</td>
+                      <td>{{ $b->merk->nama_merk }}</td>
+                      <td>{{ $b->jumlah_barang}}</td>
+                      <td>{{ $b->jenis_transaksi }}</td>
                     </tr>
                   @endforeach
                   </tbody>

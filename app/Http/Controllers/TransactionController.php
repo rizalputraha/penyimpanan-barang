@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Transaction;
 use App\Merk;
 use App\Barang;
+use App\Category;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\Input;
 
 
 class TransactionController extends Controller
@@ -19,7 +22,9 @@ class TransactionController extends Controller
     {
         $merk = Merk::all();
         $transaksi = Transaction::with('barang')->get();
-        return view('admin.transaction.index',compact('transaksi','merk'));
+        // $query = DB::table('transaction')->select('no_transaksi')->pluck('no_transaksi');
+        
+        return view('admin.transaction.index',compact('transaksi','merk','kat'));
     }
 
     /**
@@ -31,7 +36,9 @@ class TransactionController extends Controller
     {
         $merk = Merk::all();
         $barang = Barang::all();
-        return view('admin.transaction.create',compact('merk','barang'));
+        $kat = Category::all();
+
+        return view('admin.transaction.create',compact('merk','barang','kat'));
     }
 
     /**
@@ -44,10 +51,19 @@ class TransactionController extends Controller
     {
         $request->validate([
             'no_transaksi' => 'required',
-            'id_barang' => 'required',
+            'id_merk'       => 'required',
+            'jumlah_barang' => 'required',
             'jenis_transaksi' => 'required',
         ]);
 
+        // $query = DB::table('transaction')->select('no_transaksi')->pluck('no_transaksi');
+        // if(Input::has('no_transaksi') == $query){
+        //     for($i = 0 ; $i<$query->count();$i++){
+        //     $int = (int)substr($query[$i],3,6);
+        //     $request->merge(['no_transaksi' => $int+1]);
+        //     }
+        // }
+                
         Transaction::create($request->all());
         return redirect()->route('transaksi.index');
     }
@@ -73,8 +89,9 @@ class TransactionController extends Controller
     {
         $merk = Merk::all();
         $barang = Barang::all();
+        $kat = Category::all();
         $trans = Transaction::find($id);
-        return view('admin.transaction.edit',compact('trans','barang','merk'));
+        return view('admin.transaction.edit',compact('trans','barang','merk','kat'));
     }
 
     /**
@@ -88,7 +105,8 @@ class TransactionController extends Controller
     {
         $request->validate([
             'no_transaksi' => 'required',
-            'id_barang' => 'required',
+            'id_merk' => 'required',
+            'jumlah_barang' => 'required',
             'jenis_transaksi' => 'required',
         ]); 
         Transaction::find($id)->update($request->all());

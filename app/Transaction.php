@@ -9,11 +9,16 @@ class Transaction extends Model
     protected $table = 'transaction';
     protected $fillable = [
         'no_transaksi',
-        'id_barang',
+        'id_merk',
+        'jumlah_barang',
         'jenis_transaksi',
     ];
     
+    public function merk(){
+        return $this->belongsTo('App\Merk','id_merk','id');
+    }
+
     public function barang(){
-        return $this->hasOne('App\Barang','id','id_barang');
+        return $this->belongsTo('App\Barang','id_barang','id');
     }
 }

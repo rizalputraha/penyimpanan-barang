@@ -35,9 +35,11 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>No Transaksi</th>
-                      <th>Nama Barang</th>
+                      <th>Kode Transaksi</th>
+                      <th>Merk Barang</th>
+                      <th>Jumlah Barang</th>
                       <th>Jenis Transaksi</th>
+                      <th>Tanggal</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -46,8 +48,10 @@
                     <tr>
                       <th>{{ ++$key }}</th>
                       <td>{{ $trans->no_transaksi }}</td>
-                      <td>{{ $trans->barang->nama_barang}}</td>
+                      <td>{{ $trans->merk->nama_merk}}</td>
+                      <td>{{ $trans->jumlah_barang }}</td>
                       <td>{{ $trans->jenis_transaksi }}</td>
+                      <td>{{ $trans->updated_at }}</td>
                       <td>
                         <a class="btn btn-success" href="{{ route('transaksi.edit',$trans->id) }}"><i class="fa fa-pencil"></i> Edit</a>
                         <form style="display:inline;" action="{{ route('transaksi.destroy',$trans->id) }}" method="POST">

@@ -9,9 +9,8 @@ class Barang extends Model
     protected $table = 'barang';
     
     protected $fillable = [
-        'nama_barang',
+        'stok',
         'id_kategori',
-        'ket',
         'id_merk',
     ];
 
@@ -22,7 +21,4 @@ class Barang extends Model
         return $this->belongsTo('App\Merk','id_merk','id');
     }
 
-    public function transaksi(){
-        return $this->belongsTo('App\Transaction');
-    }
 }

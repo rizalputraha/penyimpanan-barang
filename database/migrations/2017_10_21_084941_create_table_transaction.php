@@ -16,7 +16,8 @@ class CreateTableTransaction extends Migration
         Schema::create('transaction', function (Blueprint $table) {
             $table->increments('id');
             $table->string('no_transaksi');
-            $table->string('id_barang');
+            $table->integer('id_merk');
+            $table->integer('jumlah_barang');
             $table->string('jenis_transaksi');
             $table->timestamps();
         });

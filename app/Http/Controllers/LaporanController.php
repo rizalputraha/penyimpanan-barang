@@ -29,7 +29,7 @@ class LaporanController extends Controller
     {
         $merk = Merk::all();
         $trans = DB::table('transaction')
-                    ->join('barang','transaction.id_barang','=','barang.id')
+                    ->join('merk','transaction.id_merk','=','merk.id')
                     ->where('jenis_transaksi','Barang Masuk')
                     ->get();
         return view('admin.laporan.masuk',compact('trans','merk'));
@@ -39,7 +39,7 @@ class LaporanController extends Controller
     {
         $merk = Merk::all();
         $trans = DB::table('transaction')
-                    ->join('barang','transaction.id_barang','=','barang.id')
+                    ->join('merk','transaction.id_merk','=','merk.id')
                     ->where('jenis_transaksi','Barang Keluar')
                     ->get();
         return view('admin.laporan.keluar',compact('trans','merk'));

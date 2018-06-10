@@ -5,7 +5,7 @@
         table{
             border-collapse:collapse; 
             table-layout:fixed; 
-            width:100%;
+            width:80%;
         }
         table td{
             border:solid 1px; 
@@ -61,9 +61,9 @@
             <img src="{{asset('admin/img/logo.jpg')}}" width="140px" alt="logo">
             <p class="header-title">Laporan Transaksi</p>
             <div class="description">
-            <p class="header-company">PT. INTI SOLUSINDO</p><br>
-            <p class="header-description">JL Surabaya no 23</p> <br>
-            <p class="header-description">Surabaya - Indonesia</p>
+            <p class="header-company">PT. INTI SOLUSINDO ABADI</p><br>
+            <p class="header-description">IT System Intergration Solutions & Maintenance</p> <br>
+            <p class="header-description">Ruko Klampis Megah Blok D-18 Surabaya - Indonesia</p>
             </div>
         </div>
         
@@ -84,13 +84,15 @@
           <div class="col-md-12">
             <div>
               <div>
-                <table border="1px" cellspacing="0" width="100%">
+                <table align="center" border="1px" cellspacing="0" width="100%">
                   <thead>
                     <tr>
-                      <th>No</th>
-                      <th>No Transaksi</th>
-                      <th>Nama Barang</th>
-                      <th>Jenis Transaksi</th>
+                    <th>No</th>
+                    <th>Kode Transaksi</th>
+                    <th>Merk Barang</th>
+                    <th>Jumlah Barang</th>
+                    <th>Jenis Transaksi</th>
+                    <th>Tanggal</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -98,8 +100,10 @@
                     <tr >
                       <th>{{ ++$key }}</th>
                       <td>{{ $b->no_transaksi }}</td>
-                      <td>{{ $b->barang->nama_barang}}</td>
+                      <td>{{ $b->merk->nama_merk}}</td>
+                      <td>{{ $b->jumlah_barang}}</td>
                       <td>{{ $b->jenis_transaksi }}</td>
+                      <td>{{ $b->updated_at }}</td>
                     </tr>
                   @endforeach
                   </tbody>

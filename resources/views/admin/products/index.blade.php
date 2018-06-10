@@ -35,10 +35,10 @@
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Nama Barang</th>
+                      <th>Stok Barang</th>
                       <th>Kategori</th>
                       <th>Merk</th>
-                      <th>Keterangan</th>
+                      <th>Tanggal</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -46,10 +46,10 @@
                   @foreach($barang as $key => $b)
                     <tr>
                       <td>{{ ++$key }}</td>
-                      <td>{{ $b->nama_barang }}</td>
+                      <td>{{ $b->stok }}</td>
                       <td>{{ $b->category->name  }}</td>
                       <td>{{ $b->merk->nama_merk}}</td>
-                      <td>{{ $b->ket }}</td>
+                      <td>{{ $b->updated_at }}</td>
                       <td>
                         <a class="btn btn-success" href="{{ route('barang.edit',$b->id) }}"><i class="fa fa-pencil"></i> Edit</a>
                         <form style="display:inline;" action="{{ route('barang.destroy',$b->id) }}" method="POST">

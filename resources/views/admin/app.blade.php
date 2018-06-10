@@ -84,7 +84,7 @@
                       <span class="title">Data merk</span>
                     </a>
                   </li>
-                  @foreach( $merk as $b)
+                  <!-- @foreach( $merk as $b)
                   <li class="menu-item">
                     <a class="menu-link" href="{{route('merk.show',$b->id)}}">
                       <span class="dot"></span>
@@ -92,7 +92,7 @@
                       
                     </a>
                   </li>
-                  @endforeach
+                  @endforeach -->
                   <li class="menu-item {{ (Request::is('admin/category')) ? 'active' : ''}}">
                     <a class="menu-link" href="{{url('admin/category')}}">
                       <span class="dot"></span>
@@ -180,8 +180,6 @@
           <li class="dropdown">
             <span class="topbar-btn" data-toggle="dropdown"><img class="avatar" src="../assets/img/avatar/1.jpg" alt="..."></span>
             <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="../page/profile.html"><i class="ti-user"></i> Profile</a>
-              <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="../page-extra/user-lock-1.html"><i class="ti-lock"></i> Lock</a>
               <form id="logout-form" action="{{ route('logout')}}" method="POST" style="width:100%;">
                 <button class="dropdown-item" type="submit" style="width:100%;"><i class="ti-lock"></i>Logout</button>

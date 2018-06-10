@@ -34,7 +34,7 @@
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
                                     <label for="input-nm-barang">Nama Merk</label>
-                                    <input id="input-nm-barang" class="form-control" name="nama_merk" type="text" placeholder="Nama Barang"/>
+                                    <input id="input-nm-barang" class="form-control" name="nama_merk" type="text" placeholder="Merk"/>
                                 </div>
                                 <div class="form-group">
                                     <input class="btn btn-primary" value="Tambah" type="submit">

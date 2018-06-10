@@ -33,8 +33,8 @@
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
-                                    <label for="input-nm-kategori">Nama Kategori</label>
-                                    <input id="input-nm-kategori" class="form-control" name="name" type="text" placeholder="Nama Kategori"/>
+                                    <label for="input-nm-kategori">Kategori</label>
+                                    <input id="input-nm-kategori" class="form-control" name="name" type="text" placeholder="Kategori"/>
                                 </div>
                                 <div class="form-group">
                                     <input class="btn btn-primary" value="Tambah" type="submit">

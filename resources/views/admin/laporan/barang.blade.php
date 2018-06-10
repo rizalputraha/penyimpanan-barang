@@ -5,7 +5,7 @@
         table{
             border-collapse:collapse; 
             table-layout:fixed; 
-            width:100%;
+            width:80%;
         }
         table td{
             border:solid 1px; 
@@ -61,9 +61,9 @@
             <img src="{{asset('admin/img/logo.jpg')}}" width="140px" alt="logo">
             <p class="header-title">Laporan Barang </p>
             <div class="description">
-            <p class="header-company">PT. INTI SOLUSINDO</p><br>
-            <p class="header-description">JL Surabaya no 23</p> <br>
-            <p class="header-description">Surabaya - Indonesia</p>
+            <p class="header-company">PT. INTI SOLUSINDO ABADI</p><br>
+            <p class="header-description">IT System Intergration Solutions & Maintenance</p> <br>
+            <p class="header-description">Ruko Klampis Megah Blok D-18 Surabaya - Indonesia</p>
             </div>
         </div>
         
@@ -84,24 +84,24 @@
           <div class="col-md-12">
             <div>
               <div>
-                <table border="1px" cellspacing="0" width="100%">
+                <table align="center" border="1px" cellspacing="0" width="100%">
                   <thead>
-                    <tr>
+                    <tr width="100px">
                       <th>No</th>
-                      <th>Nama Barang</th>
+                      <th>Stok Barang</th>
                       <th>Kategori</th>
                       <th>Merk</th>
-                      <th>Keterangan</th>
+                      <th>Tanggal</th>
                     </tr>
                   </thead>
                   <tbody>
                   @foreach($barang as $key => $b)
                     <tr >
                       <th>{{ ++$key }}</th>
-                      <td >{{ $b->nama_barang }}</td>
+                      <td >{{ $b->stok }}</td>
                       <td>{{ $b->category->name  }}</td>
                       <td>{{ $b->merk->nama_merk}}</td>
-                      <td >{{ $b->ket }}</td>
+                      <td>{{ $b->updated_at}}</td>
                     </tr>
                   @endforeach
                   </tbody>

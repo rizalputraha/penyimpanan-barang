@@ -13,7 +13,7 @@ class DetailTransaksiController extends Controller
     public function masuk(){
         $merk = Merk::all();
         $trans = DB::table('transaction')
-                    ->join('barang','transaction.id_barang','=','barang.id')
+                    ->join('merk','transaction.id_merk','=','merk.id')
                     ->where('jenis_transaksi','Barang Masuk')
                     ->get();
         return view('admin.transaction.masuk',compact('trans','merk'));
@@ -23,7 +23,7 @@ class DetailTransaksiController extends Controller
     public function keluar(){
         $merk = Merk::all();
         $trans = DB::table('transaction')
-                    ->join('barang','transaction.id_barang','=','barang.id')
+                    ->join('merk','transaction.id_merk','=','merk.id')
                     ->where('jenis_transaksi','Barang Keluar')
                     ->get();
         return view('admin.transaction.masuk',compact('trans','merk'));

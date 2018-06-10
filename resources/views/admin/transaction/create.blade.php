@@ -33,16 +33,28 @@
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">
-                                    <label for="input-nm-barang">No Transaksi</label>
+                                    <label for="input-nm-barang">Kode Transaksi</label>
                                     <input id="input-nm-barang" class="form-control" name="no_transaksi" type="text" placeholder="No transaksi"/>
                                 </div>
                                 <div class="form-group">
-                                    <label for="input-kat-barang">Nama Barang</label>
-                                    <select name="id_barang" id="input-kat-barang" class="form-control">
-                                        @foreach($barang as $b)
-                                            <option value="{{$b->id}}">{{$b->nama_barang}}</option>
+                                    <label for="input-kat-barang">Merk Barang</label>
+                                    <select name="id_merk" id="input-kat-merk" class="form-control">
+                                        @foreach($merk as $b)
+                                            <option value="{{$b->id}}">{{$b->nama_merk}}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-kat-barang">Kategori Barang</label>
+                                    <select name="id_kat" id="input-kat-barang" class="form-control">
+                                        @foreach($kat as $b)
+                                            <option value="{{$b->id}}">{{$b->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="input-jml-barang">Jumlah Barang</label>
+                                    <input id="input-jml-barang" class="form-control" name="jumlah_barang" type="text" placeholder="Jumlah Barang"/>
                                 </div>
                                 <div class="form-group">
                                     <label for="input-jml-barang">Jenis Transaksi</label>

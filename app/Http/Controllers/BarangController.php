@@ -44,9 +44,8 @@ class BarangController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_barang' => 'required',
+            'stok' => 'required',
             'id_kategori' => 'required',
-            'ket' => 'required',
             'id_merk' => 'required'
         ]);
 
@@ -89,9 +88,8 @@ class BarangController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_barang' => 'required',
+            'stok' => 'required',
             'id_kategori' => 'required',
-            'ket' => 'required',
             'id_merk' => 'required'
         ]); 
         Barang::find($id)->update($request->all());

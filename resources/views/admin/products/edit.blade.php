@@ -33,8 +33,8 @@
                                 {{ method_field('PATCH') }}
                                 {{ csrf_field() }}
                                 <div class="form-group">
-                                    <label for="input-nm-barang">Nama Barang</label>
-                                    <input id="input-nm-barang" class="form-control" name="nama_barang" value="{{ $barang->nama_barang }}" type="text" placeholder="Nama Barang"/>
+                                    <label for="input-stok-barang">Stok Barang</label>
+                                    <input id="input-stok-barang" class="form-control" name="stok" value="{{ $barang->stok }}" type="text" placeholder="Stok Barang"/>
                                 </div>
                                   <div class="form-group">
                                     <label for="input-kat-barang">Merk Barang</label>
@@ -43,10 +43,6 @@
                                         <option value="{{$m->id}}">{{$m->nama_merk}}</option>
                                         @endforeach
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="input-ket-barang">Keterangan Barang</label>
-                                    <textarea id="input-ket-barang" class="form-control" name="ket" placeholder="Keterangan">{{ $barang->ket }}</textarea>
                                 </div>
                                  <div class="form-group">
                                     <label for="input-kat-barang">Kategori Barang</label>

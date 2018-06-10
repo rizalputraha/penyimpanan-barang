@@ -33,24 +33,36 @@
                                 {{ method_field('PATCH') }}
                                 {{ csrf_field() }}
                                 <div class="form-group">
-                                    <label for="input-nm-barang">No Transaksi</label>
-                                    <input id="input-nm-barang" class="form-control" name="no_transaksi" value="{{ $trans->no_transaksi }}" type="text" placeholder="Nama Barang"/>
-                                </div>
-                                <div class="form-group">
-                                    <label for="input-jml-barang">Nama Barang</label>
-                                    <select name="id_barang" id="input-kat-barang" class="form-control">
-                                        @foreach($barang as $b)
-                                            <option value="{{$b->id}}">{{$b->nama_barang}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="input-jml-barang">Jenis Transaksi</label>
-                                    <select name="jenis_transaksi" id="input-kat-barang" class="form-control">
-                                        <option value="Barang Masuk">Barang Masuk</option>
-                                        <option value="Barang Keluar">Barang Keluar</option>
-                                    </select>
-                                </div>
+                                <label for="input-nm-barang">Kode Transaksi</label>
+                                <input id="input-nm-barang" class="form-control" name="no_transaksi" type="text" placeholder="No transaksi" value="{{$trans->no_transaksi}}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-kat-barang">Merk Barang</label>
+                                <select name="id_merk" id="input-kat-merk" class="form-control">
+                                    @foreach($merk as $b)
+                                        <option value="{{$b->id}}">{{$b->nama_merk}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-kat-barang">Kategori Barang</label>
+                                <select name="id_kat" id="input-kat-barang" class="form-control">
+                                    @foreach($kat as $b)
+                                        <option value="{{$b->id}}">{{$b->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-jml-barang">Jumlah Barang</label>
+                                <input id="input-jml-barang" class="form-control" name="jumlah_barang" type="text" placeholder="Jumlah Barang" value="{{$trans->jumlah_barang}}"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="input-jml-barang">Jenis Transaksi</label>
+                                <select name="jenis_transaksi" id="input-kat-barang" class="form-control">
+                                    <option value="Barang Masuk">Barang Masuk</option>
+                                    <option value="Barang Keluar">Barang Keluar</option>
+                                </select>
+                            </div>
                                 <div class="form-group">
                                     <input class="btn btn-primary" value="Update" type="submit">
                                 </div>
