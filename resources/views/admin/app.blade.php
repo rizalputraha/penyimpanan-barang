@@ -77,6 +77,9 @@
                       <span class="dot"></span>
                       <span class="title">Data Semua Barang</span>
                     </a>
+                    <ul>
+                        <li><a href="{{url('admin/barang-masuk')}}">Barang Masuk</a></li>
+                    </ul>
                   </li>
                   <li class="menu-item {{ (Request::is('admin/merk')) ? 'active' : ''}}">
                     <a class="menu-link" href="{{url('admin/merk')}}">
@@ -84,15 +87,6 @@
                       <span class="title">Data merk</span>
                     </a>
                   </li>
-                  <!-- @foreach( $merk as $b)
-                  <li class="menu-item">
-                    <a class="menu-link" href="{{route('merk.show',$b->id)}}">
-                      <span class="dot"></span>
-                      <span class="title">{{ $b->nama_merk }}</span>
-                      
-                    </a>
-                  </li>
-                  @endforeach -->
                   <li class="menu-item {{ (Request::is('admin/category')) ? 'active' : ''}}">
                     <a class="menu-link" href="{{url('admin/category')}}">
                       <span class="dot"></span>
@@ -100,34 +94,6 @@
                     </a>
                   </li>
               </ul>
-            </li>
-            
-            <li class="menu-item {{ (Request::is('admin/transaksi') || Request::is('admin/barang-masuk') || Request::is('admin/barang-keluar')) ? 'active open' : ''}}">
-              <a class="menu-link" href="#">
-                <span class="icon fa fa-exchange"></span>
-                <span class="title">Transaksi</span>
-                <span class="arrow"></span>
-              </a>
-                <ul class="menu-submenu">
-                <li class="menu-item {{ (Request::is('admin/transaksi')) ? 'active' : ''}}">
-                    <a class="menu-link" href="{{url('admin/transaksi')}}">
-                      <span class="dot"></span>
-                      <span class="title">Semua Transaksi</span>
-                    </a>
-                  </li>
-                  <li class="menu-item {{ (Request::is('admin/barang-masuk')) ? 'active' : ''}}">
-                    <a class="menu-link" href="{{url('admin/barang-masuk')}}">
-                      <span class="dot"></span>
-                      <span class="title">Barang Masuk</span>
-                    </a>
-                  </li>
-                  <li class="menu-item {{ (Request::is('admin/barang-keluar')) ? 'active' : ''}}">
-                    <a class="menu-link" href="{{url('admin/barang-keluar')}}">
-                      <span class="dot"></span>
-                      <span class="title">Barang Keluar</span>
-                    </a>
-                  </li>
-                </ul>
             </li>
 
             <li class="menu-item">  

@@ -25,7 +25,6 @@ class DashboardController extends Controller
     {
         $merk = Merk::all();
         $jml_barang = Merk::count();
-        $jml_transaksi = Transaction::count();
         return view('admin.dashboard.index',compact('jml_barang','jml_transaksi','merk'));
     }
 

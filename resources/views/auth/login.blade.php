@@ -37,7 +37,16 @@
         <button class="btn btn-bold btn-block btn-primary" type="submit">Login</button>
       </div>
     </form>
-
+    @if(count($errors) > 0)
+      <div class="alert alert-danger">
+          <strong>Whoops!</strong> Ada yang Salah Dengan dengan pengisiian anda<br><br>
+          <ul>
+              @foreach($errors->all as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+    @endif
 
   </div>
 </div>

@@ -29,7 +29,7 @@
                                     </ul>
                                 </div>
                             @endif
-                                <form action="{{ route('barang.store') }}" method="POST">
+                                <form action="{{ route('proses-masuk') }}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group">

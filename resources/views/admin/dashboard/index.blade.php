@@ -23,14 +23,6 @@
                         <div class="text-right">Produk</div>
                   </div>
                 </div>
-                <div class="col-6 col-lg-6">
-                  <div class="card card-body bg-primary">
-                        <div class="flexbox">
-                          <span class="ti-exchange-vertical fs-40"></span>
-                          <span class="fs-40">{{$jml_transaksi}}</span>
-                        </div>
-                        <div class="text-right">Transaksi</div>
-                  </div>
                 </div>
             </div>
         </div><!--/.main-content -->
